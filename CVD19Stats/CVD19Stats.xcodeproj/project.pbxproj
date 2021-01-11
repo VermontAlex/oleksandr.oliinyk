@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,17 @@
 		142CB88C701448A219D4F526 /* Pods_CVD19StatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A962AE39805D386929DBAD74 /* Pods_CVD19StatsTests.framework */; };
 		351D9C3425A64F5100AB5947 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351D9C3325A64F5100AB5947 /* AppDelegate.swift */; };
 		351D9C3625A64F5100AB5947 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351D9C3525A64F5100AB5947 /* SceneDelegate.swift */; };
-		351D9C3825A64F5100AB5947 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351D9C3725A64F5100AB5947 /* ViewController.swift */; };
 		351D9C3B25A64F5100AB5947 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351D9C3925A64F5100AB5947 /* Main.storyboard */; };
 		351D9C3E25A64F5100AB5947 /* CVD19Stats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 351D9C3C25A64F5100AB5947 /* CVD19Stats.xcdatamodeld */; };
 		351D9C4025A64F5600AB5947 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 351D9C3F25A64F5600AB5947 /* Assets.xcassets */; };
 		351D9C4325A64F5600AB5947 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351D9C4125A64F5600AB5947 /* LaunchScreen.storyboard */; };
 		351D9C4E25A64F5700AB5947 /* CVD19StatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351D9C4D25A64F5700AB5947 /* CVD19StatsTests.swift */; };
 		351D9C5925A64F5700AB5947 /* CVD19StatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351D9C5825A64F5700AB5947 /* CVD19StatsUITests.swift */; };
+		3586B0EE25AC582D006D1C84 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586B0ED25AC582D006D1C84 /* SettingsViewController.swift */; };
+		3586B0F325AC6161006D1C84 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586B0F225AC6161006D1C84 /* HomeScreenViewController.swift */; };
+		3586B11125AC7278006D1C84 /* CovidStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586B11025AC7278006D1C84 /* CovidStats.swift */; };
+		3586B11625AC91F3006D1C84 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586B11525AC91F3006D1C84 /* API.swift */; };
+		3586B11B25AC968B006D1C84 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586B11A25AC968B006D1C84 /* CustomTableViewCell.swift */; };
 		923F43C9260FFC348E65356C /* Pods_CVD19Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE0CBD66671B83C897444EFC /* Pods_CVD19Stats.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +47,6 @@
 		351D9C3025A64F5100AB5947 /* CVD19Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CVD19Stats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		351D9C3325A64F5100AB5947 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		351D9C3525A64F5100AB5947 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		351D9C3725A64F5100AB5947 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		351D9C3A25A64F5100AB5947 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		351D9C3D25A64F5100AB5947 /* CVD19Stats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CVD19Stats.xcdatamodel; sourceTree = "<group>"; };
 		351D9C3F25A64F5600AB5947 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +58,11 @@
 		351D9C5425A64F5700AB5947 /* CVD19StatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CVD19StatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		351D9C5825A64F5700AB5947 /* CVD19StatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVD19StatsUITests.swift; sourceTree = "<group>"; };
 		351D9C5A25A64F5700AB5947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3586B0ED25AC582D006D1C84 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3586B0F225AC6161006D1C84 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		3586B11025AC7278006D1C84 /* CovidStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidStats.swift; sourceTree = "<group>"; };
+		3586B11525AC91F3006D1C84 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		3586B11A25AC968B006D1C84 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		49A15842F3DA1D0A71996237 /* Pods_CVD19Stats_CVD19StatsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CVD19Stats_CVD19StatsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5838470312722572F6991560 /* Pods-CVD19Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVD19Stats.release.xcconfig"; path = "Target Support Files/Pods-CVD19Stats/Pods-CVD19Stats.release.xcconfig"; sourceTree = "<group>"; };
 		65B61AC0F9369641621FBF51 /* Pods-CVD19Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CVD19Stats.debug.xcconfig"; path = "Target Support Files/Pods-CVD19Stats/Pods-CVD19Stats.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,14 +126,13 @@
 		351D9C3225A64F5100AB5947 /* CVD19Stats */ = {
 			isa = PBXGroup;
 			children = (
-				351D9C3325A64F5100AB5947 /* AppDelegate.swift */,
-				351D9C3525A64F5100AB5947 /* SceneDelegate.swift */,
-				351D9C3725A64F5100AB5947 /* ViewController.swift */,
-				351D9C3925A64F5100AB5947 /* Main.storyboard */,
-				351D9C3F25A64F5600AB5947 /* Assets.xcassets */,
-				351D9C4125A64F5600AB5947 /* LaunchScreen.storyboard */,
-				351D9C4425A64F5600AB5947 /* Info.plist */,
+				3586B0E825AC5438006D1C84 /* UI */,
+				3586B0E425AC5309006D1C84 /* Models */,
+				3586B0E625AC5347006D1C84 /* Resources */,
 				351D9C3C25A64F5100AB5947 /* CVD19Stats.xcdatamodeld */,
+				351D9C3525A64F5100AB5947 /* SceneDelegate.swift */,
+				351D9C3325A64F5100AB5947 /* AppDelegate.swift */,
+				351D9C4425A64F5600AB5947 /* Info.plist */,
 			);
 			path = CVD19Stats;
 			sourceTree = "<group>";
@@ -148,6 +155,51 @@
 			path = CVD19StatsUITests;
 			sourceTree = "<group>";
 		};
+		3586B0E425AC5309006D1C84 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3586B11025AC7278006D1C84 /* CovidStats.swift */,
+				3586B11525AC91F3006D1C84 /* API.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3586B0E625AC5347006D1C84 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				351D9C3F25A64F5600AB5947 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3586B0E725AC541E006D1C84 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3586B0F225AC6161006D1C84 /* HomeScreenViewController.swift */,
+				3586B0ED25AC582D006D1C84 /* SettingsViewController.swift */,
+				3586B11A25AC968B006D1C84 /* CustomTableViewCell.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3586B0E825AC5438006D1C84 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3586B0E925AC5441006D1C84 /* Storyboards */,
+				3586B0E725AC541E006D1C84 /* ViewControllers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3586B0E925AC5441006D1C84 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				351D9C4125A64F5600AB5947 /* LaunchScreen.storyboard */,
+				351D9C3925A64F5100AB5947 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		CAFB1E37CAB00CAD7129C8E6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +210,6 @@
 				04E6F2F12C012B1DCE014589 /* Pods-CVD19StatsTests.debug.xcconfig */,
 				D54FD65F336B91994598E761 /* Pods-CVD19StatsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -410,10 +461,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				351D9C3825A64F5100AB5947 /* ViewController.swift in Sources */,
+				3586B0F325AC6161006D1C84 /* HomeScreenViewController.swift in Sources */,
+				3586B11125AC7278006D1C84 /* CovidStats.swift in Sources */,
+				3586B11B25AC968B006D1C84 /* CustomTableViewCell.swift in Sources */,
 				351D9C3E25A64F5100AB5947 /* CVD19Stats.xcdatamodeld in Sources */,
 				351D9C3425A64F5100AB5947 /* AppDelegate.swift in Sources */,
+				3586B0EE25AC582D006D1C84 /* SettingsViewController.swift in Sources */,
 				351D9C3625A64F5100AB5947 /* SceneDelegate.swift in Sources */,
+				3586B11625AC91F3006D1C84 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
