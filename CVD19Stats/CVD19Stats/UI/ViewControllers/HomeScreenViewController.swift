@@ -14,7 +14,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var covidTable: UITableView!
     
     
-    
+    var covidStats = [CovidStats]()
     
     
     
@@ -27,15 +27,17 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         covidTable.backgroundColor = .blue
-        getData(from: url)
         covidTable.delegate = self
         covidTable.dataSource = self
+        downloadJSON {
+            self.covidTable.reloadData()
+        }
         
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return covidStats.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,14 +48,19 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         
-        cell.countryStat.text = "Ukraine"
-        cell.casesStat.text = "10"
-        cell.deathStat.text   = "90"
+        cell.countryStat.text = covidStats[indexPath.row].country
+        cell.casesStat.text = String(covidStats[indexPath.row].cases)
+        cell.deathStat.text = String(covidStats[indexPath.row].deaths)
         
         
         
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsViewController = storyboard?.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
     
@@ -66,30 +73,26 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
 
 extension HomeScreenViewController {
     
-    private func getData(from url: String) {
+    func downloadJSON(completed: @escaping () -> () ) {
+        let url = URL(string: "https://corona.lmao.ninja/v2/countries")
         
-        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {data, response, error in
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
-            guard let data = data, error == nil else {
-                print("something was wrong")
-                return
-            }
-            
-        // Have data
-            var result: Response?
-            do {
-                result = try JSONDecoder().decode(Response.self, from: data)
-            }
-            catch {
-                print("failed to convert \(error.localizedDescription)")
-            }
-            guard let json = result else { return }
-            
-            print(json.status)
-            
-            
-            
-        })
+            if error == nil {
+                do {
+                self.covidStats = try JSONDecoder().decode([CovidStats].self, from: data!)
+                    DispatchQueue.main.async {
+                        completed()
+                    }
+                } catch {
+                    print("JSON error")
+                }
+        }
+        }.resume()
+        
+        
+        
+        
         
     }
     

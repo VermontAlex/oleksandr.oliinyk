@@ -9,10 +9,12 @@ import Foundation
 
 
 
-struct CovidStats {
-    let country: String?
-    let cases: String?
-    let deaths: String?
+struct CovidStats: Decodable {
+    let country: String
+//    let flag: String
+    let cases: Int
+    let recovered: Int
+    let deaths: Int
 }
 
 
