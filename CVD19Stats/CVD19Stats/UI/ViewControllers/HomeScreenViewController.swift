@@ -9,32 +9,23 @@ import UIKit
 
 class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
-
     @IBOutlet weak var covidTable: UITableView!
     
-    
     var covidStats = [CovidStats]()
-    
-    
     
     @IBAction func settings(_ sender: UIBarButtonItem) {
         let settingsViewController = storyboard?.instantiateViewController(identifier: "SettingsViewController") as! SettingsViewController
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        covidTable.backgroundColor = .blue
         covidTable.delegate = self
         covidTable.dataSource = self
         downloadJSON {
             self.covidTable.reloadData()
         }
-        
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return covidStats.count
@@ -42,34 +33,23 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "CovidStatsCellIdentifier"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CustomTableViewCell else {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as? CustomTableViewCell else {
             fatalError("Error with cell!")
         }
         
-        
-        cell.countryStat.text = covidStats[indexPath.row].country
-        cell.casesStat.text = String(covidStats[indexPath.row].cases)
-        cell.deathStat.text = String(covidStats[indexPath.row].deaths)
-        
-        
-        
+        cell.fillCell(stats: covidStats[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsViewController = storyboard?.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
+        detailsViewController.countryDetails = covidStats[indexPath.row]
         navigationController?.pushViewController(detailsViewController, animated: true)
     }
-    
-    
-    
+
 }
-
-
-
-
 
 extension HomeScreenViewController {
     
@@ -89,13 +69,5 @@ extension HomeScreenViewController {
                 }
         }
         }.resume()
-        
-        
-        
-        
-        
     }
-    
-    
-    
 }

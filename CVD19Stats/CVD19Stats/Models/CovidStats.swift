@@ -7,15 +7,11 @@
 
 import Foundation
 
-
-
 struct CovidStats: Decodable {
     let country: String
-//    let flag: String
+    let flag: String
     let cases: Int
     let recovered: Int
     let deaths: Int
 }
-
-
 
