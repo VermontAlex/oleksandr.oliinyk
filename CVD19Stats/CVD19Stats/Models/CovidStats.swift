@@ -7,11 +7,17 @@
 
 import Foundation
 
-struct CovidStats: Decodable {
+
+struct CovidStats: Codable {
     let country: String
-    let flag: String
+    let countryInfo: CountryInfo
     let cases: Int
     let recovered: Int
     let deaths: Int
 }
+
+struct CountryInfo: Codable {
+     let flag: String
+}
+
 

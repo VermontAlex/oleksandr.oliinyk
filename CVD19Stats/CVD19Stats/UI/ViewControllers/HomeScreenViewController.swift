@@ -10,8 +10,10 @@ import UIKit
 class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var covidTable: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var covidStats = [CovidStats]()
+    var filtered    = [CovidStats]()
     
     @IBAction func settings(_ sender: UIBarButtonItem) {
         let settingsViewController = storyboard?.instantiateViewController(identifier: "SettingsViewController") as! SettingsViewController
@@ -20,39 +22,37 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        downloadJSON {
+        self.covidTable.reloadData()
+        }
+        filtered = covidStats
+        covidTable.reloadData()
+        searchBar.showsCancelButton = true
+        searchBar.delegate          = self
         covidTable.delegate = self
         covidTable.dataSource = self
-        downloadJSON {
-            self.covidTable.reloadData()
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return covidStats.count
+        return filtered.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as? CustomTableViewCell else {
             fatalError("Error with cell!")
         }
-        
-        cell.fillCell(stats: covidStats[indexPath.row])
-        
+        cell.fillCell(stats: self.filtered[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsViewController = storyboard?.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
-        detailsViewController.countryDetails = covidStats[indexPath.row]
+        detailsViewController.countryDetails = filtered[indexPath.row]
         navigationController?.pushViewController(detailsViewController, animated: true)
     }
-
 }
 
 extension HomeScreenViewController {
-    
     func downloadJSON(completed: @escaping () -> () ) {
         let url = URL(string: "https://corona.lmao.ninja/v2/countries")
         
@@ -69,5 +69,21 @@ extension HomeScreenViewController {
                 }
         }
         }.resume()
+    }
+}
+
+extension HomeScreenViewController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String ) {
+        debugPrint(searchText)
+        guard !searchText.isEmpty else {
+            filtered = covidStats
+            covidTable.reloadData()
+            return
+        }
+        filtered = covidStats.filter({ covidStats -> Bool in
+            covidStats.country.lowercased().contains(searchText.lowercased())
+        })
+        covidTable.reloadData()
     }
 }
