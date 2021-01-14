@@ -14,16 +14,49 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var totalNumLabel: UILabel!
     @IBOutlet weak var recoveredNumLabel: UILabel!
     @IBOutlet weak var deadNumLabel: UILabel!
+    @IBOutlet weak var favoritesButton: UIButton!
     
     var countryDetails: CovidStats?
-
+    let favoritesButtonIcon = UIImage(named: "Star")
+    let favoritesButtonIconFilled = UIImage(named: "StarFilled")
+    
+    
+    
+    @IBAction func addToFavoritesAction(_ sender: UIButton) {
+        
+        var favorites: [String] = UserDefaults.standard.stringArray(forKey: "Favorites") ?? []
+        
+        if countryDetails?.favorite ?? false {
+//            favoritesButton.setImage(favoritesButtonIcon, for: .normal)
+            //remove from favorites
+            if let index = favorites.firstIndex(of: countryDetails!.country) {
+                favorites.remove(at: index)
+                print("Deleted")
+            }
+        }else{
+//            favoritesButton.setImage(favoritesButtonIconFilled, for: .normal)
+            //add to favorites
+            favorites.append(countryDetails!.country)
+            countryDetails?.favorite = true
+            print("Added")
+        }
+        UserDefaults.standard.set(favorites, forKey: "Favorites")
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         countryNameLabel.text = countryDetails?.country
         totalNumLabel.text = "\(countryDetails?.cases ?? 0)"
         recoveredNumLabel.text = "\(countryDetails?.recovered ?? 0)"
         deadNumLabel.text = "\(countryDetails?.deaths ?? 0)"
         flagImage.downloaded(from: (countryDetails?.countryInfo.flag)!)
+        
+//        if countryDetails?.favorite == true {
+//            favoritesButton.setImage(favoritesButtonIconFilled, for: .normal)
+//        }else{
+//            favoritesButton.setImage(favoritesButtonIcon, for: .normal)
+//        }
     }
 }
 

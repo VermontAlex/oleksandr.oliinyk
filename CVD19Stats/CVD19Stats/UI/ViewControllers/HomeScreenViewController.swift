@@ -7,30 +7,49 @@
 
 import UIKit
 
+
+
 class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var covidTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+
+    
     
     var covidStats = [CovidStats]()
     var filtered    = [CovidStats]()
+    
+    
+    
+    @IBAction func favorites(_ sender: UIBarButtonItem) {
+        let favoritesTableViewController = storyboard?.instantiateViewController(identifier: "FavoritesTableViewController") as! FavoritesTableViewController
+        navigationController?.pushViewController(favoritesTableViewController, animated: true)
+        
+    }
+    
     
     @IBAction func settings(_ sender: UIBarButtonItem) {
         let settingsViewController = storyboard?.instantiateViewController(identifier: "SettingsViewController") as! SettingsViewController
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         downloadJSON {
+        self.filtered = self.covidStats
         self.covidTable.reloadData()
         }
-        filtered = covidStats
-        covidTable.reloadData()
         searchBar.showsCancelButton = true
         searchBar.delegate          = self
         covidTable.delegate = self
         covidTable.dataSource = self
+        
+    }
+    
+    
+    func someMethodIWantToCall(){
+        print("Im here")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,11 +61,13 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             fatalError("Error with cell!")
         }
         cell.fillCell(stats: self.filtered[indexPath.row])
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsViewController = storyboard?.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
+        
         detailsViewController.countryDetails = filtered[indexPath.row]
         navigationController?.pushViewController(detailsViewController, animated: true)
     }
@@ -84,6 +105,13 @@ extension HomeScreenViewController: UISearchBarDelegate {
         filtered = covidStats.filter({ covidStats -> Bool in
             covidStats.country.lowercased().contains(searchText.lowercased())
         })
+        covidTable.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        filtered = covidStats
         covidTable.reloadData()
     }
 }

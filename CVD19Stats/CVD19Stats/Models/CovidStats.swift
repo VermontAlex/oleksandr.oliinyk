@@ -14,6 +14,7 @@ struct CovidStats: Codable {
     let cases: Int
     let recovered: Int
     let deaths: Int
+    var favorite: Bool? 
 }
 
 struct CountryInfo: Codable {

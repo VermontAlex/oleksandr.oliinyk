@@ -17,6 +17,7 @@
 		351D9C4325A64F5600AB5947 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351D9C4125A64F5600AB5947 /* LaunchScreen.storyboard */; };
 		351D9C4E25A64F5700AB5947 /* CVD19StatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351D9C4D25A64F5700AB5947 /* CVD19StatsTests.swift */; };
 		351D9C5925A64F5700AB5947 /* CVD19StatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351D9C5825A64F5700AB5947 /* CVD19StatsUITests.swift */; };
+		35237D4925B06B8F00AFCE04 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35237D4825B06B8F00AFCE04 /* FavoritesTableViewController.swift */; };
 		352DBFFC25ADA21A00366740 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352DBFFB25ADA21A00366740 /* DetailsViewController.swift */; };
 		3586B0EE25AC582D006D1C84 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586B0ED25AC582D006D1C84 /* SettingsViewController.swift */; };
 		3586B0F325AC6161006D1C84 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586B0F225AC6161006D1C84 /* HomeScreenViewController.swift */; };
@@ -58,6 +59,7 @@
 		351D9C5425A64F5700AB5947 /* CVD19StatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CVD19StatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		351D9C5825A64F5700AB5947 /* CVD19StatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVD19StatsUITests.swift; sourceTree = "<group>"; };
 		351D9C5A25A64F5700AB5947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35237D4825B06B8F00AFCE04 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		352DBFFB25ADA21A00366740 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		3586B0ED25AC582D006D1C84 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3586B0F225AC6161006D1C84 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				3586B0ED25AC582D006D1C84 /* SettingsViewController.swift */,
 				3586B11A25AC968B006D1C84 /* CustomTableViewCell.swift */,
 				352DBFFB25ADA21A00366740 /* DetailsViewController.swift */,
+				35237D4825B06B8F00AFCE04 /* FavoritesTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				3586B0F325AC6161006D1C84 /* HomeScreenViewController.swift in Sources */,
 				3586B11125AC7278006D1C84 /* CovidStats.swift in Sources */,
 				352DBFFC25ADA21A00366740 /* DetailsViewController.swift in Sources */,
+				35237D4925B06B8F00AFCE04 /* FavoritesTableViewController.swift in Sources */,
 				3586B11B25AC968B006D1C84 /* CustomTableViewCell.swift in Sources */,
 				351D9C3E25A64F5100AB5947 /* CVD19Stats.xcdatamodeld in Sources */,
 				351D9C3425A64F5100AB5947 /* AppDelegate.swift in Sources */,
