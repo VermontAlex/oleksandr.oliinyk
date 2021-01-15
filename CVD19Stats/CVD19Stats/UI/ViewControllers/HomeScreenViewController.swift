@@ -7,70 +7,86 @@
 
 import UIKit
 
-
-
 class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var covidTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-
-    
+    @IBOutlet weak var favoritesOutletButton: UIBarButtonItem!
     
     var covidStats = [CovidStats]()
-    var filtered    = [CovidStats]()
-    
-    
+    private var filtered  = [CovidStats]()
+    private var favorites = [CovidStats]()
+    private var shouldShowFavorites = false
     
     @IBAction func favorites(_ sender: UIBarButtonItem) {
-        let favoritesTableViewController = storyboard?.instantiateViewController(identifier: "FavoritesTableViewController") as! FavoritesTableViewController
-        navigationController?.pushViewController(favoritesTableViewController, animated: true)
-        
+        favoritesOutletButton.image = !shouldShowFavorites ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        shouldShowFavorites.toggle()
+        covidTable.reloadData()
     }
-    
     
     @IBAction func settings(_ sender: UIBarButtonItem) {
         let settingsViewController = storyboard?.instantiateViewController(identifier: "SettingsViewController") as! SettingsViewController
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         downloadJSON {
-        self.filtered = self.covidStats
-        self.covidTable.reloadData()
+            self.covidTable.reloadData()
         }
         searchBar.showsCancelButton = true
-        searchBar.delegate          = self
+        searchBar.delegate = self
         covidTable.delegate = self
         covidTable.dataSource = self
-        
     }
-    
     
     func someMethodIWantToCall(){
         print("Im here")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filtered.count
+        return displayStats().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as? CustomTableViewCell else {
             fatalError("Error with cell!")
         }
-        cell.fillCell(stats: self.filtered[indexPath.row])
+        let array = displayStats()
+        cell.fillCell(stats: array[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsViewController = storyboard?.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
-        
-        detailsViewController.countryDetails = filtered[indexPath.row]
+        let array = displayStats()
+        let stats = array[indexPath.row]
+        detailsViewController.countryDetails = stats
+        detailsViewController.isFavorite = favorites.contains(stats)
+        detailsViewController.didPushFavorites = { [weak self] stats in
+            self?.processFavorites(with: stats)
+        }
         navigationController?.pushViewController(detailsViewController, animated: true)
     }
+    
+    private func displayStats() -> [CovidStats] {
+        if shouldShowFavorites {
+            return favorites
+        } else if !filtered.isEmpty {
+            return filtered
+        } else {
+           return covidStats
+        }
+    }
+    private func processFavorites(with stats: CovidStats) {
+        if let index = favorites.firstIndex(of: stats) {
+            favorites.remove(at: index)
+        } else {
+            favorites.append(stats)
+        }
+        covidTable.reloadData()
+}
 }
 
 extension HomeScreenViewController {
@@ -96,12 +112,6 @@ extension HomeScreenViewController {
 extension HomeScreenViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String ) {
-        debugPrint(searchText)
-        guard !searchText.isEmpty else {
-            filtered = covidStats
-            covidTable.reloadData()
-            return
-        }
         filtered = covidStats.filter({ covidStats -> Bool in
             covidStats.country.lowercased().contains(searchText.lowercased())
         })
@@ -111,7 +121,8 @@ extension HomeScreenViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        filtered = covidStats
+        filtered.removeAll()
         covidTable.reloadData()
     }
 }
+

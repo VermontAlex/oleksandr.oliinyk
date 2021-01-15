@@ -14,11 +14,18 @@ struct CovidStats: Codable {
     let cases: Int
     let recovered: Int
     let deaths: Int
-    var favorite: Bool? 
 }
 
 struct CountryInfo: Codable {
      let flag: String
+}
+
+extension CovidStats: Equatable{
+    static func == (lhs: CovidStats, rhs: CovidStats) -> Bool {
+        return lhs.country == rhs.country
+            && lhs.cases == rhs.cases
+            && lhs.recovered == rhs.recovered
+    }
 }
 
 

@@ -11,11 +11,9 @@ class CustomTableViewCell: UITableViewCell {
     
     static let identifier = "CovidStatsCellIdentifier"
     
-    
     @IBOutlet weak var deathStat: UILabel!
     @IBOutlet weak var casesStat: UILabel!
     @IBOutlet weak var countryStat: UILabel!
-    
     
     func fillCell(stats: CovidStats) {
         countryStat.text = stats.country

@@ -18,7 +18,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YcH-cB-8qF">
                                 <rect key="frame" x="0.0" y="100" width="414" height="636"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CovidStatsCellIdentifier" rowHeight="192" id="Btl-PU-Noj" customClass="CustomTableViewCell" customModule="CVD19Stats" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="192"/>
@@ -91,7 +91,7 @@
                     <navigationItem key="navigationItem" title="CVD-19" id="Gav-5O-ozo">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="star" catalog="system" id="t7m-qY-skl">
                             <connections>
-                                <action selector="favorites:" destination="WAT-Ki-mtc" id="EQQ-Rw-xuD"/>
+                                <action selector="favorites:" destination="WAT-Ki-mtc" id="JoT-xV-K1i"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape" catalog="system" id="OXt-cI-SiF">
@@ -102,6 +102,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="covidTable" destination="YcH-cB-8qF" id="eOv-NC-KZg"/>
+                        <outlet property="favoritesOutletButton" destination="t7m-qY-skl" id="ArU-9f-Eyf"/>
                         <outlet property="searchBar" destination="4wb-O7-wND" id="pm1-UH-dIz"/>
                     </connections>
                 </viewController>
@@ -109,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="1134.7826086956522" y="-51.358695652173914"/>
         </scene>
-        <!--Details View Controller-->
+        <!--Settings-->
         <scene sceneID="RCH-3s-fAA">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EWV-rS-D5S" customClass="DetailsViewController" customModule="CVD19Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EWV-rS-D5S" customClass="DetailsViewController" customModule="CVD19Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bpn-X7-1CB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,34 +223,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABQ-k6-zuZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1979.7101449275365" y="292.66304347826087"/>
-        </scene>
-        <!--Favorites-->
-        <scene sceneID="JwP-SO-7iJ">
-            <objects>
-                <tableViewController storyboardIdentifier="FavoritesTableViewController" title="Favorites" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HFc-NL-gdu" customClass="FavoritesTableViewController" customModule="CVD19Stats" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="71c-a5-CEm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wb2-ZZ-gkW">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wb2-ZZ-gkW" id="LC6-kV-haY">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="HFc-NL-gdu" id="Zh4-KE-Chb"/>
-                            <outlet property="delegate" destination="HFc-NL-gdu" id="gsF-Ha-riz"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TQI-bR-CJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1135" y="-699"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Vsd-bA-KXg">
