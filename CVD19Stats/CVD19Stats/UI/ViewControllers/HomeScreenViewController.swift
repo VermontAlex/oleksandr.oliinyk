@@ -9,6 +9,7 @@ import UIKit
 
 class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var flagIconOutlet: UIImageView!
     @IBOutlet weak var covidTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var favoritesOutletButton: UIBarButtonItem!

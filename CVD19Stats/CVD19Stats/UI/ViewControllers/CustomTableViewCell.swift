@@ -11,6 +11,7 @@ class CustomTableViewCell: UITableViewCell {
     
     static let identifier = "CovidStatsCellIdentifier"
     
+    @IBOutlet weak var flagIconOutlet: UIImageView!
     @IBOutlet weak var deathStat: UILabel!
     @IBOutlet weak var casesStat: UILabel!
     @IBOutlet weak var countryStat: UILabel!
@@ -19,6 +20,7 @@ class CustomTableViewCell: UITableViewCell {
         countryStat.text = stats.country
         casesStat.text = String(stats.cases)
         deathStat.text = String(stats.deaths)
+        flagIconOutlet.downloaded(from: (stats.countryInfo.flag))
     }
     
     
