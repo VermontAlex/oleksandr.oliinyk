@@ -6,14 +6,22 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UIViewController {
 
-    @IBAction func changeMode(_ sender: UISwitch) {
-        
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func logOutAction(_ sender: UIButton) {
+        do {
+          try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+        } catch {
+            print(error)
+        }
+    }
 }
+

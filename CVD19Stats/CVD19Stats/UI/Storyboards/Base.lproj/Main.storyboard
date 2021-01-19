@@ -10,7 +10,7 @@
         <!--CVD-19-->
         <scene sceneID="Ck1-gP-ooo">
             <objects>
-                <viewController storyboardIdentifier="Main" id="WAT-Ki-mtc" customClass="HomeScreenViewController" customModule="CVD19Stats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeScreenViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WAT-Ki-mtc" customClass="HomeScreenViewController" customModule="CVD19Stats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cm4-ha-Rmy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -284,18 +284,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wIj-5h-8ya">
-                                <rect key="frame" x="182.66666666666666" y="352.66666666666669" width="51" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-NU-23z">
+                                <rect key="frame" x="181.66666666666666" y="353" width="51" height="30"/>
+                                <state key="normal" title="LogOut"/>
                                 <connections>
-                                    <action selector="changeMode:" destination="D0H-NC-1Co" eventType="valueChanged" id="zNm-C7-bJo"/>
+                                    <action selector="logOutAction:" destination="D0H-NC-1Co" eventType="touchUpInside" id="WQn-C3-DWc"/>
                                 </connections>
-                            </switch>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fvn-fi-ruq"/>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.73725490196078436" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wIj-5h-8ya" firstAttribute="centerX" secondItem="YYR-hl-XPd" secondAttribute="centerX" id="fAf-y6-KIF"/>
-                            <constraint firstItem="wIj-5h-8ya" firstAttribute="centerY" secondItem="YYR-hl-XPd" secondAttribute="centerY" id="w5m-ae-GNI"/>
+                            <constraint firstItem="ajG-NU-23z" firstAttribute="centerX" secondItem="YYR-hl-XPd" secondAttribute="centerX" id="OpR-Fp-6K4"/>
+                            <constraint firstItem="ajG-NU-23z" firstAttribute="centerY" secondItem="YYR-hl-XPd" secondAttribute="centerY" id="mxT-ju-Ait"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -320,7 +321,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1r9-z7-ZDO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="266.66666666666669" y="-50.54347826086957"/>
+            <point key="canvasLocation" x="361" y="-51"/>
         </scene>
     </scenes>
     <resources>
