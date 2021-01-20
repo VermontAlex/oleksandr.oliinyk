@@ -126,7 +126,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xK1-4X-sva"/>
-                        <color key="backgroundColor" red="0.98039215686274506" green="0.73725490196078436" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YcH-cB-8qF" firstAttribute="trailing" secondItem="xK1-4X-sva" secondAttribute="trailing" id="Iih-y9-ix1"/>
                             <constraint firstItem="zsa-V4-MTG" firstAttribute="top" secondItem="4wb-O7-wND" secondAttribute="bottom" id="P6n-MG-P1y"/>
@@ -312,6 +312,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2UB-2u-QU4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

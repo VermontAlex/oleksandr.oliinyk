@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
     }
     
     @IBAction func logOutAction(_ sender: UIButton) {

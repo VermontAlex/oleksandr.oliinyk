@@ -35,6 +35,7 @@ class DetailsViewController: UIViewController {
         deadNumLabel.text = "\(countryDetails?.deaths ?? 0)"
         flagImage.downloaded(from: (countryDetails?.countryInfo.flag)!)
         changeStarFill()
+        overrideUserInterfaceStyle = .light
     }
     
     private func changeStarFill(){

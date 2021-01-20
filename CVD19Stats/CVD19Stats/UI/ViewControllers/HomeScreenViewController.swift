@@ -18,6 +18,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     private var filtered  = [CovidStats]()
     private var favorites = [CovidStats]()
     private var shouldShowFavorites = false
+    static let identifier = "HomeScreenViewController"
+    
     
     @IBAction func favorites(_ sender: UIBarButtonItem) {
         favoritesOutletButton.image = !shouldShowFavorites ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
@@ -39,6 +41,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         searchBar.delegate = self
         covidTable.delegate = self
         covidTable.dataSource = self
+        overrideUserInterfaceStyle = .light
     }
     
     func someMethodIWantToCall(){

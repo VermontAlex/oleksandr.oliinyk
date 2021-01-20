@@ -13,6 +13,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
+    func show(_ viewController: UIViewController) {
+            let scene = window?.windowScene
+            let window = UIWindow(windowScene: scene!)
+            let navigation = UINavigationController(rootViewController: viewController)
+            window.rootViewController = navigation
+            self.window = window
+            window.makeKeyAndVisible()
+        }
     
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -41,7 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     func showModalAuth(){
         let storyboard = UIStoryboard(name: "Authentification", bundle: nil)
-        let newVC = storyboard.instantiateViewController(identifier: "AuthentificationPageViewController") as! AuthentificationPageViewController
+        let newVC = storyboard.instantiateViewController(identifier: AuthentificationPageViewController.identifier) as! AuthentificationPageViewController
         self.window?.rootViewController?.present(newVC, animated: false, completion: nil)
         
     }

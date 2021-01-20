@@ -10,6 +10,9 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
+    
+    static let identifier = "SignUpViewController"
+    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,6 +23,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
+        overrideUserInterfaceStyle = .light
     }
     
     func setUpElements() {
@@ -100,9 +104,10 @@ class SignUpViewController: UIViewController {
         errorLabel.alpha = 1
     }
     func transitionToHome() {
-        let homeScreenViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboards.homeScreenViewController) as? HomeScreenViewController
-        view.window?.rootViewController = homeScreenViewController
-        view.window?.makeKeyAndVisible()
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = storyboard.instantiateViewController(identifier: HomeScreenViewController.identifier) as? HomeScreenViewController {
+            self.sceneDelegate?.show(controller)
+        }
     }
 }
 

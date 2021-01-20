@@ -7,9 +7,8 @@ target 'CVD19Stats' do
 
   # Pods for CVD19Stats
 
-pod 'SDWebImage'
+
 pod 'Firebase/Auth'
-pod 'Firebase/Analytics'
 pod 'Firebase/Core'
 pod 'Firebase/Firestore'
 

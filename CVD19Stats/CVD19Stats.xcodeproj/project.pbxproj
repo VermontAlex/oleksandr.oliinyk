@@ -23,7 +23,6 @@
 		352453A325B7143100F06399 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352453A225B7143100F06399 /* SignUpViewController.swift */; };
 		352453A825B7148100F06399 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352453A725B7148100F06399 /* LoginViewController.swift */; };
 		352453AE25B71CF100F06399 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352453AD25B71CF100F06399 /* Utilities.swift */; };
-		352453E325B739DB00F06399 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352453E225B739DB00F06399 /* Constants.swift */; };
 		352DBFFC25ADA21A00366740 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352DBFFB25ADA21A00366740 /* DetailsViewController.swift */; };
 		3586B0EE25AC582D006D1C84 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586B0ED25AC582D006D1C84 /* SettingsViewController.swift */; };
 		3586B0F325AC6161006D1C84 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586B0F225AC6161006D1C84 /* HomeScreenViewController.swift */; };
@@ -71,7 +70,6 @@
 		352453A225B7143100F06399 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		352453A725B7148100F06399 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		352453AD25B71CF100F06399 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		352453E225B739DB00F06399 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		352DBFFB25ADA21A00366740 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		3586B0ED25AC582D006D1C84 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3586B0F225AC6161006D1C84 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				352453AD25B71CF100F06399 /* Utilities.swift */,
-				352453E225B739DB00F06399 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -499,7 +496,6 @@
 				352453A325B7143100F06399 /* SignUpViewController.swift in Sources */,
 				3524535225B6C67B00F06399 /* AuthentificationPageViewController.swift in Sources */,
 				352453AE25B71CF100F06399 /* Utilities.swift in Sources */,
-				352453E325B739DB00F06399 /* Constants.swift in Sources */,
 				351D9C3E25A64F5100AB5947 /* CVD19Stats.xcdatamodeld in Sources */,
 				351D9C3425A64F5100AB5947 /* AppDelegate.swift in Sources */,
 				3586B0EE25AC582D006D1C84 /* SettingsViewController.swift in Sources */,
@@ -682,6 +678,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P53ZA2TH9W;
 				INFOPLIST_FILE = CVD19Stats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -701,6 +698,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P53ZA2TH9W;
 				INFOPLIST_FILE = CVD19Stats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

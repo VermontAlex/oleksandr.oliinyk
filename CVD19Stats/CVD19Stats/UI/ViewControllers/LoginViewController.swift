@@ -9,6 +9,8 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
+    
+    static let identifier = "LoginViewController"
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -18,6 +20,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
+        //MARK: Personall pre-fill login.
+        #if DEBUG
+        emailTextField.text = "test@test.com"
+        passwordTextField.text = "Qwerty12!@"
+        #endif
+        overrideUserInterfaceStyle = .light
     }
     
     func setUpElements() {
@@ -42,11 +50,23 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             } else {
                 
-                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let homePageViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.homeScreenViewController) as! HomeScreenViewController
-                self.view.window?.rootViewController = homePageViewController
-                self.view.window?.makeKeyAndVisible()
+                self.transitionToHome()
             }
         }
+    }
+    
+    func transitionToHome() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = storyboard.instantiateViewController(identifier: HomeScreenViewController.identifier) as? HomeScreenViewController {
+            self.sceneDelegate?.show(controller)
+        }
+    }
+}
+
+extension UIViewController {
+    var sceneDelegate: SceneDelegate? {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let delegate = windowScene.delegate as? SceneDelegate else { return nil }
+        return delegate
     }
 }

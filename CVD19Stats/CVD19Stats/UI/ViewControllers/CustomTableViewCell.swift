@@ -21,6 +21,7 @@ class CustomTableViewCell: UITableViewCell {
         casesStat.text = String(stats.cases)
         deathStat.text = String(stats.deaths)
         flagIconOutlet.downloaded(from: (stats.countryInfo.flag))
+        overrideUserInterfaceStyle = .light
     }
     
     

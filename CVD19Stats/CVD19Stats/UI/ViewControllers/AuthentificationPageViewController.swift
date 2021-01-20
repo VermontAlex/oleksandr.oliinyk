@@ -10,6 +10,8 @@ import Firebase
 
 
 class AuthentificationPageViewController: UIViewController {
+    
+    static let identifier = "AuthentificationPageViewController"
 
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
@@ -17,6 +19,7 @@ class AuthentificationPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
+        overrideUserInterfaceStyle = .light
     }
     
     func setUpElements(){
@@ -26,12 +29,12 @@ class AuthentificationPageViewController: UIViewController {
     
     @IBAction func signUpButton(_ sender: UIButton) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Authentification", bundle: nil)
-        let signUpViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.signUpViewController) as! SignUpViewController
+        let signUpViewController = storyboard.instantiateViewController(withIdentifier: SignUpViewController.identifier) as! SignUpViewController
         self.present(signUpViewController, animated: true, completion: nil)
     }
     @IBAction func loginButton(_ sender: UIButton) {
     let storyboard: UIStoryboard = UIStoryboard(name: "Authentification", bundle: nil)
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.loginViewController) as! LoginViewController
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: LoginViewController.identifier) as! LoginViewController
     self.present(loginViewController, animated: true, completion: nil)
     }
     
