@@ -17,7 +17,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
@@ -42,15 +41,20 @@ class SignUpViewController: UIViewController {
             || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
             || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
             || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            
+
             return "Please fill in all fields."
         }
+        //Check if the email valid
+        let cleanedEmail = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if Utilities.isEmailValid(cleanedEmail) == false {
+            return "Make sure your email is contains a character @ and a hosting."
+        }
+
         //Check if the password is secure
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         if Utilities.isPasswordValid(cleanedPassword) == false {
-            return "Please make sure your password is at least 8 characters contains a special character and a number."
+            return "Make sure your password is at least 8 characters contains a special character and a number."
         }
-        
         return nil
     }
 
@@ -96,8 +100,9 @@ class SignUpViewController: UIViewController {
         errorLabel.alpha = 1
     }
     func transitionToHome() {
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboards.homeViewController) as? HomeScreenViewController
-        view.window?.rootViewController = homeViewController
+        let homeScreenViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboards.homeScreenViewController) as? HomeScreenViewController
+        view.window?.rootViewController = homeScreenViewController
         view.window?.makeKeyAndVisible()
     }
 }
+

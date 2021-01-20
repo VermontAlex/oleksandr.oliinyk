@@ -21,17 +21,17 @@ class AuthentificationPageViewController: UIViewController {
     
     func setUpElements(){
         Utilities.styleFilledButton(signUpButton)
-        Utilities.styleFilledButton(loginButton)
+        Utilities.styleHollowButton(loginButton)
     }
     
     @IBAction func signUpButton(_ sender: UIButton) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Authentification", bundle: nil)
-        let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+        let signUpViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.signUpViewController) as! SignUpViewController
         self.present(signUpViewController, animated: true, completion: nil)
     }
     @IBAction func loginButton(_ sender: UIButton) {
     let storyboard: UIStoryboard = UIStoryboard(name: "Authentification", bundle: nil)
-    let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.loginViewController) as! LoginViewController
     self.present(loginViewController, animated: true, completion: nil)
     }
     

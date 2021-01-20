@@ -31,9 +31,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        //Validate Text Fields
-        
-        
         //Create cleaned versions of the text
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -44,8 +41,9 @@ class LoginViewController: UIViewController {
                 self.errorLabel.text = error!.localizedDescription
                 self.errorLabel.alpha = 1
             } else {
+                
                 let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let homePageViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.homeViewController) as! HomeScreenViewController
+                let homePageViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.homeScreenViewController) as! HomeScreenViewController
                 self.view.window?.rootViewController = homePageViewController
                 self.view.window?.makeKeyAndVisible()
             }
