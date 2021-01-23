@@ -16,15 +16,53 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var deadNumLabel: UILabel!
     @IBOutlet weak var favoritesButton: UIButton!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var countryDetails: CovidStats?
     var didPushFavorites: ((CovidStats) -> ())?
     var isFavorite: Bool = false
 
+    @IBAction func removeAllFav(_ sender: UIButton) {
+    }
+    
+    
+    
     @IBAction func addToFavoritesAction(_ sender: UIButton) {
         guard let countryDetails = countryDetails else { return }
         isFavorite.toggle()
         changeStarFill()
         didPushFavorites?(countryDetails)
+        //CoreData Create context
+        let favCountry = CovidCountry(context: self.context)
+        favCountry.covidnamecountry = countryNameLabel.text
+        favCountry.covidcases = totalNumLabel.text
+        favCountry.covidrecovered = recoveredNumLabel.text
+        favCountry.coviddeaths = deadNumLabel.text
+        let covidFlag = CovidFlag(context: self.context)
+            covidFlag.flagimage = (countryDetails.countryInfo.flag)
+            favCountry.covidflag = covidFlag
+        print("Created  DetailsVC")
+        //if-else checking Create or Delete object in CoreData
+        if isFavorite {
+            //Save Object to CoreData
+            do{
+                try self.context.save()
+                print("Saved  Details VC")
+            } catch {
+                print("Error for saving object in DetailsVC")
+            }
+            print("SAVE",favCountry, "SAVE")
+        } else {
+            //Delete from CoreData
+            self.context.delete(favCountry)
+            print("DELETE",favCountry,"DELETE")
+            //Save changes
+            do{
+            try self.context.save()
+                print("save changes about delete")
+            } catch {
+            print("Error due Saving after deleted in DetailsVC")
+            }
+        }
     }
         
     override func viewDidLoad() {

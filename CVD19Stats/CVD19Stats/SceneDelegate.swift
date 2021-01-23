@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: scene!)
             let navigation = UINavigationController(rootViewController: viewController)
             window.rootViewController = navigation
+            navigation.overrideUserInterfaceStyle = .light
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -51,7 +52,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Authentification", bundle: nil)
         let newVC = storyboard.instantiateViewController(identifier: AuthentificationPageViewController.identifier) as! AuthentificationPageViewController
         self.window?.rootViewController?.present(newVC, animated: false, completion: nil)
-        
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

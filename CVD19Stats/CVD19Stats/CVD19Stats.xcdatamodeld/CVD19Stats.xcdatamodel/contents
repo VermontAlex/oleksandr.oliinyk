@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CovidCountry" representedClassName="CovidCountry" syncable="YES" codeGenerationType="class">
+        <attribute name="covidcases" optional="YES" attributeType="String"/>
+        <attribute name="coviddeaths" optional="YES" attributeType="String"/>
+        <attribute name="covidnamecountry" optional="YES" attributeType="String"/>
+        <attribute name="covidrecovered" optional="YES" attributeType="String"/>
+        <relationship name="covidflag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CovidFlag" inverseName="countryrelationship" inverseEntity="CovidFlag"/>
+    </entity>
+    <entity name="CovidFlag" representedClassName="CovidFlag" syncable="YES" codeGenerationType="class">
+        <attribute name="flagimage" optional="YES" attributeType="String"/>
+        <relationship name="countryrelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CovidCountry" inverseName="covidflag" inverseEntity="CovidCountry"/>
+    </entity>
+    <elements>
+        <element name="CovidCountry" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="CovidFlag" positionX="-54" positionY="18" width="128" height="73"/>
+    </elements>
 </model>

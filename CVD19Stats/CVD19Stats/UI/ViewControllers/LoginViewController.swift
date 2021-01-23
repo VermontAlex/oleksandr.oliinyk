@@ -58,7 +58,9 @@ class LoginViewController: UIViewController {
     func transitionToHome() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = storyboard.instantiateViewController(identifier: HomeScreenViewController.identifier) as? HomeScreenViewController {
+            overrideUserInterfaceStyle = .light
             self.sceneDelegate?.show(controller)
+            
         }
     }
 }

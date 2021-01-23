@@ -9,15 +9,15 @@ import Foundation
 
 
 struct CovidStats: Codable {
-    let country: String
-    let countryInfo: CountryInfo
-    let cases: Int
-    let recovered: Int
-    let deaths: Int
+    var country: String
+    var countryInfo: CountryInfo
+    var cases: Int
+    var recovered: Int
+    var deaths: Int
 }
 
 struct CountryInfo: Codable {
-     let flag: String
+     var flag: String
 }
 
 extension CovidStats: Equatable{
@@ -27,5 +27,6 @@ extension CovidStats: Equatable{
             && lhs.recovered == rhs.recovered
     }
 }
+
 
 
