@@ -16,10 +16,10 @@ extension CovidCountry {
         return NSFetchRequest<CovidCountry>(entityName: "CovidCountry")
     }
 
-    @NSManaged public var covidcases: String?
-    @NSManaged public var coviddeaths: String?
+    @NSManaged public var covidcases: Int64
+    @NSManaged public var coviddeaths: Int64
     @NSManaged public var covidnamecountry: String?
-    @NSManaged public var covidrecovered: String?
+    @NSManaged public var covidrecovered: Int64
     @NSManaged public var covidflag: CovidFlag?
 
 }

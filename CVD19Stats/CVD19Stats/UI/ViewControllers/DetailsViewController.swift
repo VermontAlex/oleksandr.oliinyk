@@ -21,11 +21,6 @@ class DetailsViewController: UIViewController {
     var didPushFavorites: ((CovidStats) -> ())?
     var isFavorite: Bool = false
 
-    @IBAction func removeAllFav(_ sender: UIButton) {
-    }
-    
-    
-    
     @IBAction func addToFavoritesAction(_ sender: UIButton) {
         guard let countryDetails = countryDetails else { return }
         isFavorite.toggle()
@@ -34,9 +29,9 @@ class DetailsViewController: UIViewController {
         //CoreData Create context
         let favCountry = CovidCountry(context: self.context)
         favCountry.covidnamecountry = countryNameLabel.text
-        favCountry.covidcases = totalNumLabel.text
-        favCountry.covidrecovered = recoveredNumLabel.text
-        favCountry.coviddeaths = deadNumLabel.text
+        favCountry.covidcases = Int64(totalNumLabel.text ?? "") ?? 0
+        favCountry.covidrecovered = Int64(recoveredNumLabel.text ?? "") ?? 0
+        favCountry.coviddeaths = Int64(deadNumLabel.text ?? "") ?? 0
         let covidFlag = CovidFlag(context: self.context)
             covidFlag.flagimage = (countryDetails.countryInfo.flag)
             favCountry.covidflag = covidFlag

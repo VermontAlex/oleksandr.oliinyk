@@ -17,21 +17,16 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var covidStats = [CovidStats]()
-    
     private var covidFavCountry = [CovidCountry]()
     private var favorites = [CovidStats]()
     private var filtered  = [CovidStats]()
-    
     private var shouldShowFavorites = false
     static let identifier = "HomeScreenViewController"
-    
     
     @IBAction func favorites(_ sender: UIBarButtonItem) {
         favoritesOutletButton.image = !shouldShowFavorites ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
         shouldShowFavorites.toggle()
         covidTable.reloadData()
-        
-        
     }
     
     @IBAction func settings(_ sender: UIBarButtonItem) {
@@ -50,7 +45,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         covidTable.dataSource = self
         overrideUserInterfaceStyle = .light
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayStats().count
@@ -79,7 +73,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
-    
     private func displayStats() -> [CovidStats] {
         if shouldShowFavorites {
             //Fetch CoreData and transfer it to [CovidStats]()
@@ -89,24 +82,24 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             catch {
                 print("Error in shouldShowFavorites fetching data")
             }
-//            print(favorites)
-//            favorites.removeAll()
-//            let test : CovidStats = .init(country: "Default", countryInfo: .init(flag: "https://images.wallpaperscraft.com"), cases: 0, recovered: 0, deaths: 0)
-//            favorites.append(test)
-//            print(favorites)
-            for object in covidFavCountry{
+           favorites.removeAll()
+            for object in covidFavCountry {
                 print("object")
-                for var copyObject in favorites {
-                    print("copy")
-                    copyObject.country = object.covidnamecountry!
-                    copyObject.cases = Int(object.covidcases!)!
-                    copyObject.deaths = Int(object.coviddeaths!)!
-                    copyObject.countryInfo.flag = (object.covidflag?.flagimage)!
-                    copyObject.recovered = Int(object.covidrecovered!)!
-                    favorites.append(copyObject)
+                if let covidCountry = object.covidnamecountry,
+                   let countryFlagImage = object.covidflag?.flagimage {
+                    let recovered = Int(object.covidrecovered)
+                    let deaths = Int(object.coviddeaths)
+                        let cases = Int(object.covidcases)
+                    let countryInfo = CountryInfo(flag: countryFlagImage)
+                    let covidStats = CovidStats(country: covidCountry,
+                                                countryInfo: countryInfo,
+                                                cases: cases,
+                                                recovered: recovered,
+                                                deaths: deaths)
+                    favorites.append(covidStats)
                 }
             }
-            print(favorites.count)
+            
             return favorites
             
         } else if !filtered.isEmpty {
@@ -115,6 +108,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
            return covidStats
         }
     }
+    
     private func processFavorites(with stats: CovidStats) {
         if let index = favorites.firstIndex(of: stats) {
             favorites.remove(at: index)
