@@ -291,12 +291,21 @@
                                     <action selector="logOutAction:" destination="D0H-NC-1Co" eventType="touchUpInside" id="WQn-C3-DWc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeu-P0-9uq">
+                                <rect key="frame" x="137" y="413" width="140" height="30"/>
+                                <state key="normal" title="Remove all Favorites"/>
+                                <connections>
+                                    <action selector="removeAllFavorites:" destination="D0H-NC-1Co" eventType="touchUpInside" id="CVY-ly-PXL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fvn-fi-ruq"/>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qeu-P0-9uq" firstAttribute="top" secondItem="ajG-NU-23z" secondAttribute="bottom" constant="30" id="2XU-qn-Xne"/>
                             <constraint firstItem="ajG-NU-23z" firstAttribute="centerX" secondItem="YYR-hl-XPd" secondAttribute="centerX" id="OpR-Fp-6K4"/>
                             <constraint firstItem="ajG-NU-23z" firstAttribute="centerY" secondItem="YYR-hl-XPd" secondAttribute="centerY" id="mxT-ju-Ait"/>
+                            <constraint firstItem="qeu-P0-9uq" firstAttribute="centerX" secondItem="YYR-hl-XPd" secondAttribute="centerX" id="zZN-D6-wi5"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -314,6 +323,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.2156072259" green="0.1988265216" blue="0.1983635426" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

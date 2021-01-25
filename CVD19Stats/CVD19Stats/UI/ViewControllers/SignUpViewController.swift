@@ -29,7 +29,6 @@ class SignUpViewController: UIViewController {
     func setUpElements() {
         //Hide the error label
         errorLabel.alpha = 0
-        
         //Style the elements
         Utilities.styleTextField(firstNameTextField)
         Utilities.styleTextField(lastNameTextField)
@@ -83,7 +82,7 @@ class SignUpViewController: UIViewController {
                     self.showError("Error creating user")
                 } else {
                     
-                    //User was created succesfully, now store the firs name and last name
+                    //User was created succesfully, now store the first name and last name
                     let db = Firestore.firestore()
                     
                     db.collection("users").addDocument(data: ["firstName": firstName, "lastName":lastName, "uid":result!.user.uid]) { (error) in

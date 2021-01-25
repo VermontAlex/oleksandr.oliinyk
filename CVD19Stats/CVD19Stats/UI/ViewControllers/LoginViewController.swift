@@ -25,7 +25,6 @@ class LoginViewController: UIViewController {
         emailTextField.text = "test@test.com"
         passwordTextField.text = "Qwerty12!@"
         #endif
-        overrideUserInterfaceStyle = .light
     }
     
     func setUpElements() {

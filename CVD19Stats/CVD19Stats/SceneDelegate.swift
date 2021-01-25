@@ -18,9 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: scene!)
             let navigation = UINavigationController(rootViewController: viewController)
             window.rootViewController = navigation
-            navigation.overrideUserInterfaceStyle = .light
             self.window = window
+            window.overrideUserInterfaceStyle = .light
             window.makeKeyAndVisible()
+            
         }
     
 
@@ -29,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+//        window?.overrideUserInterfaceStyle = .light
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -46,8 +48,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.showModalAuth()
             }
         }
+        window?.overrideUserInterfaceStyle = .light
         
     }
+    
+        
     func showModalAuth(){
         let storyboard = UIStoryboard(name: "Authentification", bundle: nil)
         let newVC = storyboard.instantiateViewController(identifier: AuthentificationPageViewController.identifier) as! AuthentificationPageViewController

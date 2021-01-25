@@ -19,7 +19,6 @@ class AuthentificationPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
-        overrideUserInterfaceStyle = .light
     }
     
     func setUpElements(){

@@ -15,13 +15,14 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var favoritesOutletButton: UIBarButtonItem!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    static let identifier = "HomeScreenViewController"
     
     var covidStats = [CovidStats]()
-    private var covidFavCountry = [CovidCountry]()
     private var favorites = [CovidStats]()
     private var filtered  = [CovidStats]()
+    //Array for CoreData
+    private var covidFavCountry = [CovidCountry]()
     private var shouldShowFavorites = false
-    static let identifier = "HomeScreenViewController"
     
     @IBAction func favorites(_ sender: UIBarButtonItem) {
         favoritesOutletButton.image = !shouldShowFavorites ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
@@ -43,7 +44,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         searchBar.delegate = self
         covidTable.delegate = self
         covidTable.dataSource = self
-        overrideUserInterfaceStyle = .light
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,7 +84,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             }
            favorites.removeAll()
             for object in covidFavCountry {
-                print("object")
                 if let covidCountry = object.covidnamecountry,
                    let countryFlagImage = object.covidflag?.flagimage {
                     let recovered = Int(object.covidrecovered)

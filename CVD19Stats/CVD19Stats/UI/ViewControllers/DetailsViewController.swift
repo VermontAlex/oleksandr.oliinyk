@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CoreData
+
 
 class DetailsViewController: UIViewController {
 
@@ -25,41 +27,40 @@ class DetailsViewController: UIViewController {
         guard let countryDetails = countryDetails else { return }
         isFavorite.toggle()
         changeStarFill()
-        didPushFavorites?(countryDetails)
-        //CoreData Create context
-        let favCountry = CovidCountry(context: self.context)
-        favCountry.covidnamecountry = countryNameLabel.text
-        favCountry.covidcases = Int64(totalNumLabel.text ?? "") ?? 0
-        favCountry.covidrecovered = Int64(recoveredNumLabel.text ?? "") ?? 0
-        favCountry.coviddeaths = Int64(deadNumLabel.text ?? "") ?? 0
-        let covidFlag = CovidFlag(context: self.context)
-            covidFlag.flagimage = (countryDetails.countryInfo.flag)
-            favCountry.covidflag = covidFlag
-        print("Created  DetailsVC")
+    
         //if-else checking Create or Delete object in CoreData
         if isFavorite {
+            //CoreData Create context
+            let favCountry = CovidCountry(context: self.context)
+            favCountry.covidnamecountry = countryNameLabel.text
+            favCountry.covidcases = Int64(totalNumLabel.text ?? "") ?? 0
+            favCountry.covidrecovered = Int64(recoveredNumLabel.text ?? "") ?? 0
+            favCountry.coviddeaths = Int64(deadNumLabel.text ?? "") ?? 0
+            let covidFlag = CovidFlag(context: self.context)
+                covidFlag.flagimage = (countryDetails.countryInfo.flag)
+                favCountry.covidflag = covidFlag
             //Save Object to CoreData
             do{
                 try self.context.save()
-                print("Saved  Details VC")
             } catch {
                 print("Error for saving object in DetailsVC")
             }
-            print("SAVE",favCountry, "SAVE")
         } else {
-            //Delete from CoreData
-            self.context.delete(favCountry)
-            print("DELETE",favCountry,"DELETE")
-            //Save changes
-            do{
-            try self.context.save()
-                print("save changes about delete")
+            let fetchRequest = NSFetchRequest<CovidCountry>(entityName: "CovidCountry")
+            fetchRequest.predicate = NSPredicate(format: "covidnamecountry == %@", countryNameLabel.text!)
+            do {
+                let objects = try! context.fetch(fetchRequest)
+                for object in objects {
+                    context.delete(object)
+                }
+                try context.save()
             } catch {
-            print("Error due Saving after deleted in DetailsVC")
+                print("ERROR!!!")
             }
         }
+        didPushFavorites?(countryDetails)
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         countryNameLabel.text = countryDetails?.country
@@ -68,7 +69,6 @@ class DetailsViewController: UIViewController {
         deadNumLabel.text = "\(countryDetails?.deaths ?? 0)"
         flagImage.downloaded(from: (countryDetails?.countryInfo.flag)!)
         changeStarFill()
-        overrideUserInterfaceStyle = .light
     }
     
     private func changeStarFill(){
@@ -97,3 +97,4 @@ extension UIImageView {
         downloaded(from: url, contentMode: mode)
     }
 }
+
