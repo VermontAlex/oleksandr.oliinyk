@@ -45,6 +45,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         covidTable.delegate = self
         covidTable.dataSource = self
     }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayStats().count
@@ -120,13 +121,15 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
 
 extension HomeScreenViewController {
     func downloadJSON(completed: @escaping () -> () ) {
-        let url = URL(string: "https://corona.lmao.ninja/v2/countries")
+        let urlString = "https://corona.lmao.ninja/v2/countries"
+        guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if error == nil {
                 do {
-                self.covidStats = try JSONDecoder().decode([CovidStats].self, from: data!)
+                    guard let data = data else {return}
+                self.covidStats = try JSONDecoder().decode([CovidStats].self, from: data)
                     DispatchQueue.main.async {
                         completed()
                     }

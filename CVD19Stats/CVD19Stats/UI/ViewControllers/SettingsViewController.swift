@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import CoreData
 
+
 class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {

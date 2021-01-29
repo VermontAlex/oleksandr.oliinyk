@@ -31,6 +31,7 @@ class AuthentificationPageViewController: UIViewController {
         let signUpViewController = storyboard.instantiateViewController(withIdentifier: SignUpViewController.identifier) as! SignUpViewController
         self.present(signUpViewController, animated: true, completion: nil)
     }
+    
     @IBAction func loginButton(_ sender: UIButton) {
     let storyboard: UIStoryboard = UIStoryboard(name: "Authentification", bundle: nil)
         let loginViewController = storyboard.instantiateViewController(withIdentifier: LoginViewController.identifier) as! LoginViewController
